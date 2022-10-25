@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css/' %}">
+    <link rel="shortcut icon" href="{% static '/images/9.png/' %} " type="image/x-icon">
+    <title>Sistema de Aluguel de Mesas</title>
+</head>
+<body style="background-image:url({% static 'images/background.png/' %});">
+    <header>
+        <nav>
+            <img id="logo-header"  src="images/SAM.png" alt="">
+        </nav>
+        
+        <a href="{% url 'logout_empresa' %}"><button id="btn-header" class="btn-1">Sair</button></a>
+    </header>
+    <main class="crud-main">
+        <div class="tit-crud">
+            <h1>Mesas Cadastradas</h1>
+            <a href="{% url 'create_mesa' %}"><button class="btn-2"  id="btn-nmesa">Nova Mesa</button></a>
+        </div>
+        <div class="crud">
+            <table>
+                {%for i in mesas%}
+                <tr>
+                    <th>Mesa</th>
+                    <th>Número de cadeiras</th>
+                    <th>Local</th>
+                    <th>Status</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+                <tr>
+                    <td colspan="7">
+                    <hr class="line">
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{i.mes_codigo}}</td>
+                    <td>{{i.mes_quant_cadeiras}}</td>
+                    <td>{{i.mes_local}}</td>
+                    {% if i.mes_status == False%}
+                        <td>Disponivel</td>
+                    {% else %}
+                        <td>Alugada</td>
+                    {%endif%}
+                    <td>{{i.mes_preco}}</td>
+                    <td>
+                        <Button class="btn-3" >Editar</Button> <button class="btn-4">Deletar</button>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </main>
+    <footer>
+        <h1 class="text-footer">© Sistema de Aluguel de Mesas - 2022</h1>
+        <nav>
+            <ul class="nav_links">
+                <li>Política de Privacidade</li>
+                <li>Ajuda</li>
+                <li>Suporte</li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>

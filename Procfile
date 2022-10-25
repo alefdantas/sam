@@ -1,0 +1,1 @@
+web: gunicorn aluguel_de_mesas.wsgi

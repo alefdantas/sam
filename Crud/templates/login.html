@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css/' %}">
+    <link rel="shortcut icon" href="{% static '/images/9.png/' %} " type="image/x-icon">
+    <title>Sistema de Aluguel de Mesas</title>
+</head>
+<body style="background-image:url({% static 'images/background.png/' %});">
+    <header>
+        <nav>
+            <img id="logo-header"  src="images/SAM.png" alt="">
+        </nav>
+    </header>
+    <main id="main-global">
+        <div class="login">
+            <h1>Acesso</h1>
+            <form method="post">
+                {% csrf_token%}
+                <div class="input-log">
+                    <input type="text"  name="cli_username"placeholder="Digite seu Username">
+                    <input type="password" name="cli_senha" placeholder="Digite sua senha">
+                </div>
+                <div class="button-log">
+                    <button type="submit" class="btn-2 btn-login">Entrar</button>
+                </div>
+            <form>
+        </div>
+    </main>
+    <footer>
+        <h1 class="text-footer">© Sistema de Aluguel de Mesas - 2022</h1>
+        <nav>
+            <ul class="nav_links">
+                <li>Política de Privacidade</li>
+                <li>Ajuda</li>
+                <li>Suporte</li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
