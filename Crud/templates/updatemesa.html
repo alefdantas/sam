@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <title>Sistema de Aluguel de Mesas</title>
+</head>
+<body style="background-image:url({% static 'images/background.png' %});">
+    <header>
+        <nav>
+            <img id="logo-header"  src="{% static 'images/SAM.png' %}" alt="">
+        </nav>
+
+        <a href="{% url 'admin_mesas' %}"><button id="btn-header" class="btn-1">Voltar</button></a>
+    </header>
+    <main id="main-global">
+        <div class="cadasmesa">
+            <h1>Cadastro de Mesas</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="input-log">
+                    {% for i in mesa %}
+                    <input type="text" value="{{i.mes_codigo}}" name="mes_codigo" placeholder="Mesa">
+                    <input type="text" value="{{i.mes_quant_cadeiras}}" name="mes_quant_cadeiras" placeholder="Número de cadeiras">
+                    <input type="text" value="{{i.mes_local}}" name="mes_local" placeholder="Local">
+                    <input type="text" value="{{i.mes_preco}}" name="mes_preco" placeholder="Preço">
+                    {%endfor%}
+                </div>
+                <br>
+                <div class="button-log">
+                    <button class="btn-2 btn-login">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <h1 class="text-footer">© Sistema de Aluguel de Mesas - 2022</h1>
+    </footer>
+</body>
+</html>

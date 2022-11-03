@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <title>Sistema de Aluguel de Mesas</title>
+</head>
+<body style="background-image:url({% static 'images/background.png' %});">
+    <header>
+        <nav>
+            <img id="logo-header"  src="{% static 'images/SAM.png' %}" alt="">
+        </nav>
+        
+        <a href="{% url 'logout_empresa' %}"><button id="btn-header" class="btn-1">Sair</button></a>
+    </header>
+    <main class="crud-main">
+        <div class="tit-crud">
+            <h1>Mesas Cadastradas</h1>
+            <a href="{% url 'create_mesa' %}"><button class="btn-2"  id="btn-nmesa">Nova Mesa</button></a>
+            <a href="{% url 'admin_mesas_alugadas' %}"><button class="btn-2"  id="btn-nmesa">alugadas</button></a>
+        </div>
+        <div class="crud">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mesa</th>
+                        <th>Número de cadeiras</th>
+                        <th>Local</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                {%for i in mesas%}
+                {% if i.mes_status == False%}
+                <tr>
+                    <td colspan="7">
+                    <hr class="line">
+                    </td>
+                </tr>
+                <tr>
+                    <td label="Mesa">{{i.mes_codigo}}</td>
+                    <td label="Nº de cadeiras">{{i.mes_quant_cadeiras}}</td>
+                    <td label="Local">{{i.mes_local}}</td>
+                    
+                    <td label="Preço">{{i.mes_preco}}</td>
+                    <td>
+                        <a href="{% url 'update_mesas' i.mes_codigo %}"><Button class="btn-3" >Editar</Button></a> <a href="{% url 'delete_mesas' i.mes_codigo %}"> <button class="btn-4">Deletar</button></a>
+                    </td>
+                </tr>
+                {%endif%}
+                {%endfor%}
+            </table>
+        </div>
+    </main>
+    <footer>
+        <h1 class="text-footer">© Sistema de Aluguel de Mesas - 2022</h1>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <title>Sistema de Aluguel de Mesas</title>
+</head>
+<body style="background-image:url({% static 'images/background.png' %});">
+    <header>
+        <nav>
+            <img id="logo-header"  src="{% static 'images/SAM.png' %}" alt="">
+        </nav>
+    </header>
+    <main id="main-id">
+        <div id="main-index">
+            <div class="div-1">
+                <h1 id="frase-1">Gerencie suas mesas</h1>
+                <h2 id="frase-2">Sem Dificuldades!</h2>
+            </div>
+            <div class="div-2">
+                <a href="{% url 'create_empresa' %}"><button id="btn-main" class="btn-1"><img src="{% static 'images/empresa.svg' %}">Sou Empresa</button></a>
+                <a href="{% url 'create_cliente' %}"><button id="btn-main" class="btn-1"><img src="{% static 'images/cliente.svg' %}"> Sou Cliente</button></a>
+            </div>
+        </div>
+        <div id="santana">
+            <img src="{% static 'images/santana.png' %}" alt="">
+        </div>
+    </main>
+    <footer>
+        <h1 class="text-footer">© Sistema de Aluguel de Mesas - 2022</h1>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Sistema de Aluguel de Mesas</title>
+</head>
+<body style="background-image:url({% static 'images/background.png' %});">
+    <header>
+        <nav>
+            <img id="logo-header"  src="{% static 'images/SAM.png' %}" alt="">
+        </nav>
+        
+        <div class="button-header">
+            <a href="{% url 'aluguel_mesa_disponiveis' %}"><button id="btn-header" class="btn-1">Voltar</button></a>
+            <a href="{% url 'logout_cliente' %}"><button id="btn-header" class="btn-1">Sair</button></a>
+        </div>
+    </header>
+    <main class="crud-main">
+        <div class="tit-crud">
+            <h1>Mesas Alugadas</h1>
+        </div>
+        <div class="crud">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mesa</th>
+                        <th>Número de cadeiras</th>
+                        <th>Local</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                {% for i in mesa_aux %}
+                    <tr>
+                        <td colspan="5">
+                        <hr class="line">
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td label="Mesa">{{i.alu_mes_codigo}}</td>
+                        <td label="Nº de cadeiras">{{i.alu_mes_quant_cadeiras}}</td>
+                        <td label="Local">Ilha de Sant'ana</td>
+                        <td label="Preço">{{i.alu_mes_preco}}</td>
+                    </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </main>
+    <footer>
+        <h1 class="text-footer">© Sistema de Aluguel de Mesas - 2022</h1>
+    </footer>
+</body>
+</html>

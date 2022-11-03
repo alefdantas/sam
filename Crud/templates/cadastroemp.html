@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <title>Sistema de Aluguel de Mesas</title>
+</head>
+<body style="background-image:url({% static 'images/background.png' %});">
+    <header>
+        <nav>
+            <img id="logo-header"  src="{% static 'images/SAM.png' %}" alt="">
+        </nav>
+        <div class="button-header">
+            <a href="{% url 'logar_empresa' %}"><button id="btn-header" class="btn-1">Entrar</button></a>
+            <a href="{% url 'index' %}"><button id="btn-header" class="btn-1">Voltar</button></a>
+        </div>
+    </header>
+    <main id="main-global">
+        <div class="login">
+            <h1>Cadastro</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="input-log">
+                    <input type="text" name="emp_cnpj" placeholder="Digite seu CNPJ">
+                    <input type="text" name="emp_razao" placeholder="Digite sua Razão Social">
+                    <input type="email" name="emp_email" placeholder="Digite seu E-mail">
+                    <input type="password" name="emp_senha" placeholder="Digite sua senha">
+                    <input type="password" name="" placeholder="Confirme sua senha">
+                </div>
+                <div class="button-log">
+                    <br>
+                    <button type="submit" class="btn-2 btn-login">Cadastrar-se</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <h1 class="text-footer">© Sistema de Aluguel de Mesas - 2022</h1>
+    </footer>
+</body>
+</html>
